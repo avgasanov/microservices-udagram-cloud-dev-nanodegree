@@ -62,6 +62,7 @@ router.get('/signed-url/:fileName',
     async (req: Request, res: Response) => {
     let { fileName } = req.params;
     const url = AWS.getPutSignedUrl(fileName);
+    console.log('filename check: ', url)
     res.status(201).send({url: url});
 });
 
@@ -73,6 +74,7 @@ router.post('/',
     async (req: Request, res: Response) => {
     const caption = req.body.caption;
     const fileName = req.body.url;
+    console.log('filename check: ', fileName)
 
     // check Caption is valid
     if (!caption) {
